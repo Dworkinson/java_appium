@@ -1,12 +1,10 @@
 import io.appium.java_client.android.AndroidDriver;
-//import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.junit.*;
-import pageobject.AnimationsScreen;
-import pageobject.MainScreen;
+import pageobject.AllScreens;
 
 public class ApiDemosTest {
     public static final int PORT = 4723;
@@ -14,9 +12,7 @@ public class ApiDemosTest {
     private static AppiumDriverLocalService service;
     public static AndroidDriver driver;
 
-    public static MainScreen mainScreen;
-    public static AnimationsScreen animationsScreen;
-
+    public static AllScreens allScreens;
     @BeforeClass
     public static void start() {
         service = new AppiumServiceBuilder()
@@ -32,16 +28,15 @@ public class ApiDemosTest {
                 .eventTimings();
         driver = new AndroidDriver(service.getUrl(), options);
 
-        mainScreen = new MainScreen(driver);
-        animationsScreen = new AnimationsScreen(driver);
+        allScreens = new AllScreens(driver);
     }
 
     @Test
     public void doNothing() {
-        Assert.assertEquals(mainScreen.getTitle(), "API Demos");
-        mainScreen.clickAnimations();
-        animationsScreen.clickSeeking();
-        animationsScreen.moveBar();
+        Assert.assertEquals(allScreens.mainScreen.getTitle(), "API Demos");
+        allScreens.mainScreen.clickAccessibility();
+        allScreens.accessibilityScreen.clickNodeQuerying();
+        allScreens.nodeQueryingScreen.clickTakeOutTrash();
     }
 
     @AfterClass

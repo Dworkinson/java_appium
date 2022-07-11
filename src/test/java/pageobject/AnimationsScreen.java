@@ -1,16 +1,8 @@
 package pageobject;
 
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
-
-import java.time.Duration;
-import java.util.Collections;
 
 public class AnimationsScreen extends BaseScreen {
     public AnimationsScreen(AndroidDriver driver) {
