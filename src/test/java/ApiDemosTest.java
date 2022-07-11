@@ -5,6 +5,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.junit.*;
+import pageobject.AnimationsScreen;
 import pageobject.MainScreen;
 
 public class ApiDemosTest {
@@ -14,6 +15,7 @@ public class ApiDemosTest {
     public static AndroidDriver driver;
 
     public static MainScreen mainScreen;
+    public static AnimationsScreen animationsScreen;
 
     @BeforeClass
     public static void start() {
@@ -29,12 +31,17 @@ public class ApiDemosTest {
                 .setApp("D:/andrew/java/untitled1/src/test/resources/ApiDemos-debug.apk")
                 .eventTimings();
         driver = new AndroidDriver(service.getUrl(), options);
+
         mainScreen = new MainScreen(driver);
+        animationsScreen = new AnimationsScreen(driver);
     }
 
     @Test
     public void doNothing() {
-        mainScreen.clickApp();
+        Assert.assertEquals(mainScreen.getTitle(), "API Demos");
+        mainScreen.clickAnimations();
+        animationsScreen.clickSeeking();
+        animationsScreen.moveBar();
     }
 
     @AfterClass
