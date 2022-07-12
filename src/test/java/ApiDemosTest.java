@@ -32,21 +32,43 @@ public class ApiDemosTest {
     }
 
     @Test
-    public void doNothing() {
+    public void checkBoxes() {
         Assert.assertEquals(allScreens.mainScreen.getTitle(), "API Demos");
         allScreens.mainScreen.clickAccessibility();
-        allScreens.accessibilityScreen.clickNodeQuerying();
+//        allScreens.accessibilityScreen.clickNodeQuerying();
 
-        allScreens.nodeQueryingScreen.takeOutTrash();
-        allScreens.nodeQueryingScreen.doLaundry();
-        allScreens.nodeQueryingScreen.conquerWorld();
-        allScreens.nodeQueryingScreen.nap();
-        allScreens.nodeQueryingScreen.doTaxes();
-        allScreens.nodeQueryingScreen.abolishIRS();
-        allScreens.nodeQueryingScreen.teaWithAuntSharon();
+//        allScreens.nodeQueryingScreen.takeOutTrash();
+//        allScreens.nodeQueryingScreen.doLaundry();
+//        allScreens.nodeQueryingScreen.conquerWorld();
+//        allScreens.nodeQueryingScreen.nap();
+//        allScreens.nodeQueryingScreen.doTaxes();
+//        allScreens.nodeQueryingScreen.abolishIRS();
+//        allScreens.nodeQueryingScreen.teaWithAuntSharon();
+//
+//        allScreens.nodeQueryingScreen.back();
+//        allScreens.accessibilityScreen.clickCustomView();
+    }
 
-        allScreens.nodeQueryingScreen.back();
-        allScreens.accessibilityScreen.clickCustomView();
+    @Test
+    public void add_deleteButton() {
+        driver.resetApp();
+        allScreens.mainScreen.clickAnimations();
+        allScreens.animationsScreen.clickDefaultLayoutAnimations();
+        allScreens.defaultLayoutAnimationScreen.addButton();
+        allScreens.defaultLayoutAnimationScreen.addButton();
+        allScreens.defaultLayoutAnimationScreen.addButton();
+
+        Assert.assertTrue(allScreens.defaultLayoutAnimationScreen.isAddedButtonDisplayed(1));
+        Assert.assertTrue(allScreens.defaultLayoutAnimationScreen.isAddedButtonDisplayed(2));
+        Assert.assertTrue(allScreens.defaultLayoutAnimationScreen.isAddedButtonDisplayed(3));
+
+        allScreens.defaultLayoutAnimationScreen.removeButton(1);
+        allScreens.defaultLayoutAnimationScreen.removeButton(2);
+        allScreens.defaultLayoutAnimationScreen.removeButton(3);
+
+        Assert.assertFalse(allScreens.defaultLayoutAnimationScreen.isAddedButtonDisplayed(1));
+        Assert.assertFalse(allScreens.defaultLayoutAnimationScreen.isAddedButtonDisplayed(2));
+        Assert.assertFalse(allScreens.defaultLayoutAnimationScreen.isAddedButtonDisplayed(3));
     }
 
     @AfterClass

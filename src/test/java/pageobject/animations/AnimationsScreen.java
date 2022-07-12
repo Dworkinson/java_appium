@@ -1,12 +1,17 @@
-package pageobject;
+package pageobject.animations;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pageobject.BaseScreen;
 
 public class AnimationsScreen extends BaseScreen {
     public AnimationsScreen(AndroidDriver driver) {
         super(driver);
+    }
+
+    private WebElement defaultLayoutAnimations() {
+        return buildUiSelector("Default Layout Animations", "description");
     }
 
     private WebElement seeking() {
@@ -14,8 +19,11 @@ public class AnimationsScreen extends BaseScreen {
     }
 
     private WebElement seekBar() {
-//        return buildUiSelector("io.appium.android.apis:id/seekBar", "resourceId");
         return driver.findElement(new By.ById("io.appium.android.apis:id/seekBar"));
+    }
+
+    public void clickDefaultLayoutAnimations() {
+        defaultLayoutAnimations().click();
     }
 
     public void moveBar() {
