@@ -2,6 +2,8 @@ package pageobject;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.PointerInput;
@@ -33,5 +35,9 @@ public class BaseScreen {
     protected WebElement buildScrollableUiSelector(String text, String method) {
         String selectorText = "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector()." + method + "(\"" + text + "\"))";
         return driver.findElement(new AppiumBy.ByAndroidUIAutomator(selectorText));
+    }
+
+    public void back() {
+        driver.pressKey(new KeyEvent(AndroidKey.BACK));
     }
 }

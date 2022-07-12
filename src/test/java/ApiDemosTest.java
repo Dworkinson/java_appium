@@ -36,7 +36,17 @@ public class ApiDemosTest {
         Assert.assertEquals(allScreens.mainScreen.getTitle(), "API Demos");
         allScreens.mainScreen.clickAccessibility();
         allScreens.accessibilityScreen.clickNodeQuerying();
-        allScreens.nodeQueryingScreen.clickTakeOutTrash();
+
+        allScreens.nodeQueryingScreen.takeOutTrash();
+        allScreens.nodeQueryingScreen.doLaundry();
+        allScreens.nodeQueryingScreen.conquerWorld();
+        allScreens.nodeQueryingScreen.nap();
+        allScreens.nodeQueryingScreen.doTaxes();
+        allScreens.nodeQueryingScreen.abolishIRS();
+        allScreens.nodeQueryingScreen.teaWithAuntSharon();
+
+        allScreens.nodeQueryingScreen.back();
+        allScreens.accessibilityScreen.clickCustomView();
     }
 
     @AfterClass
